@@ -1,0 +1,195 @@
+@import url("https://fonts.googleapis.com/css2?family=Caveat&display=swap");
+.image-home {
+  height: 250px;
+}
+a:hover {
+  text-decoration: none;
+  color: white;
+}
+
+.landing {
+  height: 100vh;
+  background-image: url("/static/main/bg.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: grid;
+  grid-template-rows: 10vh 1fr 1fr;
+}
+.landing::after {
+  content: "";
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 0;
+}
+.title {
+  font-size: clamp(3.2rem, 8vw, 8rem);
+  font-weight: 600;
+  opacity: 1;
+  color: white;
+  z-index: 10;
+  text-align: center;
+  place-self: end center;
+  margin-top: 50px;
+}
+.create-btn {
+  background: linear-gradient(262deg, #ff7854, #fd267d);
+  padding: 1rem 3rem;
+  transition: background ease;
+  border-radius: 100vh;
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-align: center;
+  z-index: 10;
+  margin-top: 50px;
+  place-self: start center;
+  box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.27);
+}
+.create-btn:hover {
+  background: #fd5068;
+}
+.navigation {
+  z-index: 999;
+  text-decoration: none;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  grid-row: 0/1;
+  padding: 20px;
+  font-size: 1.3rem;
+}
+.navigation--bg {
+  background: #fd267c7a;
+}
+.logo {
+  color: white;
+  font-family: "Caveat", cursive;
+  font-size: 1.5rem;
+}
+
+.login {
+  text-decoration: none;
+  color: #fd267d;
+  position: relative;
+  background: white;
+  padding: 0.7rem 2.2rem;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 1rem;
+  border-radius: 5px;
+}
+.profile-link {
+  text-decoration: none;
+  color: white;
+  margin-right: 10px;
+}
+.profile {
+  display: flex;
+  margin: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+.profile-about {
+  text-align: center;
+}
+.profile-image {
+  border-radius: 50%;
+  margin: 5px;
+}
+.bio {
+  font-size: 1.4rem;
+  color: gray;
+  max-width: 50ch;
+}
+.username {
+  font-size: 1.5rem;
+  color: grey;
+  text-align: center;
+  font-style: italic;
+  opacity: 0.9;
+}
+@media screen and (max-width: 900px) {
+  .profile-about {
+    margin: 10px;
+  }
+}
+
+.stats {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  align-items: center;
+  width: 50%;
+  text-align: center;
+  margin-bottom: 60px;
+  border-top: 1px solid black;
+}
+.stats div {
+  margin: 20px;
+  height: 50px;
+}
+.stats h4 {
+  font-size: 1.3rem;
+}
+.header {
+  color: grey;
+}
+.user-card {
+  margin: 15px;
+  box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.15);
+}
+.users-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.info-container {
+  padding: 20px;
+}
+.like-btn,
+.block-btn {
+  background: transparent;
+  border: 0;
+  transition: transform 250ms ease;
+}
+.like-btn:focus,
+.block-btn:focus {
+  outline: none;
+  background: none;
+}
+.like-btn i {
+  font-size: 1.5rem;
+  color: rgb(209, 107, 124);
+}
+.block-btn i {
+  font-size: 1.5rem;
+  color: rgba(187, 15, 44, 0.9);
+}
+
+.like-btn:hover,
+.block-btn:hover {
+  transform: scale(1.1);
+}
+#message {
+  margin: 20px auto;
+  max-width: 50%;
+}
+#filter {
+  margin: auto;
+  max-width: 50vw;
+}
+@media screen and (max-width: 900px) {
+  #filter {
+    max-width: 100%;
+    margin: 10px;
+  }
+}

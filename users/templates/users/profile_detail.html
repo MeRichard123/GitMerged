@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+<!--  -->
+{% load crispy_forms_tags %}
+<!--  -->
+{% block content %}
+<section>
+  <div class="navigation navigation--bg">
+    <a href="/" class="logo">GitMerged</a>
+    <div>
+      {% if user.is_authenticated %}
+      <a href="{% url 'profile-page' %}" class="profile-link">Profile</a>
+      <a href="{% url 'logout' %}" class="login">Logout</a>
+      {% else %}
+      <a href="{% url 'login' %}" class="login">Log in</a>
+      {% endif %}
+    </div>
+  </div>
+  <section class="profile">
+    <div>
+      <img src="{{object.profile_image.url}}" alt="" class="profile-image" />
+    </div>
+    <div class="profile-about">
+      <h2>{{ object.full_name }}</h2>
+      <p class="bio">{{ object.bio }}</p>
+      <p class="username">{{ object.user.username }}</p>
+    </div>
+    <div class="stats">
+      <div>
+        <h4 class="header">Age</h4>
+        <h4>{{ object.age }}</h4>
+      </div>
+      <div>
+        <h4 class="header">Tech Stack</h4>
+        <h4>{{object.tech_stack}}</h4>
+      </div>
+      <div>
+        <h4 class="header">Likeability</h4>
+        <h4>{{object.likeability.count}}</h4>
+      </div>
+    </div>
+  </section>
+</section>
+
+<footer class="page-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col l6 s12">
+        <h5 class="white-text">GitMerged</h5>
+        <p class="grey-text text-lighten-4">
+          Git Merged with your perfect tech pair.
+        </p>
+      </div>
+      <div class="col l4 offset-l2 s12">
+        <h5 class="white-text">Links</h5>
+        <ul>
+          <li>
+            <a class="grey-text text-lighten-3" href="{% url 'profile-page' %}"
+              >Profile</a
+            >
+          </li>
+          <li>
+            <a class="grey-text text-lighten-3" href="{% url 'logout' %}"
+              >Logout</a
+            >
+          </li>
+          <li>
+            <a class="grey-text text-lighten-3" href="{% url 'date-page' %}"
+              >Home</a
+            >
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="footer-copyright">
+    <div class="container">
+      GitMerged © 2020
+    </div>
+  </div>
+</footer>
+
+<!--  -->
+{% endblock content %}

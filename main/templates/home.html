@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+<!--  -->
+{% block content %}
+<section class="landing">
+  <div class="navigation">
+    <a href="" class="logo">GitMerged</a>
+    <a href="{% url 'login' %}" class="login">Log in</a>
+  </div>
+  <h1 class="title">Match. Chat. Date.</h1>
+  <a href="{% url 'register' %}" class="create-btn">Create Account</a>
+</section>
+{% endblock content %}
