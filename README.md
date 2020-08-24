@@ -21,7 +21,7 @@ If you would like to try this youself then clone the repo
 
 Then I recommend you start a virtual environment:
 ```
-pip install virtual env
+pip install virtual
 vritualenv env
 env\Scripts\activate.bat
 ```
