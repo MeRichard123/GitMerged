@@ -38,6 +38,12 @@
         <h4>{{object.likeability.count}}</h4>
       </div>
     </div>
+    <a
+      href="{% url 'write-message' object.user.username %}"
+      class="btn"
+      style="margin: 20px; background: coral;"
+      >Send a Message</a
+    >
   </section>
 </section>
 

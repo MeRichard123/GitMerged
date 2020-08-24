@@ -16,4 +16,4 @@ class ProfileUpdateForm(forms.ModelForm):
     class Meta:
         model = Profile
         fields = "__all__"
-        exclude = ["likeability", 'user']
+        exclude = ["likeability", 'user', 'blocked_by']

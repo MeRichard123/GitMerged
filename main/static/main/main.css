@@ -2,9 +2,12 @@
 .image-home {
   height: 250px;
 }
-a:hover {
-  text-decoration: none;
-  color: white;
+.link:hover {
+  text-decoration: none !important;
+  color: white !important;
+}
+a {
+  text-decoration: none !important;
 }
 
 .landing {
@@ -85,6 +88,10 @@ a:hover {
   font-size: 1rem;
   border-radius: 5px;
 }
+a.login:hover {
+  background: #fd267d;
+}
+
 .profile-link {
   text-decoration: none;
   color: white;
@@ -146,11 +153,13 @@ a:hover {
 .user-card {
   margin: 15px;
   box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.15);
+  color: #2b2b2b;
 }
 .users-container {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+  margin-bottom: 50px;
 }
 .info-container {
   padding: 20px;
@@ -186,10 +195,94 @@ a:hover {
 #filter {
   margin: auto;
   max-width: 50vw;
+  color: #2b2b2b;
 }
 @media screen and (max-width: 900px) {
   #filter {
     max-width: 100%;
     margin: 10px;
   }
+}
+.container-fluid {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background: rgb(241, 133, 133);
+}
+.container-fluid .btn {
+  margin: auto;
+}
+.container-fluid h1 {
+  color: white;
+  margin-bottom: 50px;
+}
+.container-fluid form {
+  background: rgba(0, 0, 0, 0.18);
+  padding: 10px;
+}
+.container-fluid form label {
+  color: white;
+}
+
+.messages {
+  min-height: 100vh;
+  margin: auto;
+}
+.message {
+  display: flex;
+  position: relative;
+  margin: auto;
+  padding: 10px;
+  max-width: 40rem;
+  align-items: center;
+  box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.15);
+  margin-bottom: 20px;
+}
+.message__detail {
+  padding: 10px;
+  border-right: 2px solid #515151;
+}
+
+.message__image {
+  height: 100px;
+  border-radius: 50%;
+}
+
+.message__date {
+  color: lightslategray;
+}
+.message__content {
+  margin: 15px;
+}
+.message__msg {
+  margin: 0 auto;
+}
+.mark-read {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  background: none;
+  border: 0;
+}
+.mark-read i {
+  margin: 5px;
+}
+
+.burger a {
+  position: relative;
+}
+.burger span {
+  position: absolute;
+  right: -20px;
+  top: -15px;
+  background: #26a69a;
+  color: white;
+  font-weight: thin;
+}
+.read {
+  position: absolute;
+  top: 1px;
+  right: 20px;
 }

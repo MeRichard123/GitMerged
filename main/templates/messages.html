@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<section>
+  <div class="navigation navigation--bg">
+    <a href="{% url 'date-page' %}" class="logo link">GitMerged</a>
+    <div>
+      {% if user.is_authenticated %}
+      <a href="{% url 'profile-page' %}" class="profile-link link">Profile</a>
+      <a href="{% url 'logout' %}" class="login link">Logout</a>
+      {% else %}
+      <a href="{% url 'login' %}" class="login link">Log in</a>
+      {% endif %}
+    </div>
+  </div>
+  <ul id="slide-out" class="sidenav">
+    <li>
+      <div class="user-view">
+        <img class="circle" src="{{userIn.profile.profile_image.url}}" />
+        <span class="name">{{userIn.profile.full_name}}</span>
+        <span class="email">{{userIn.email}}</span>
+      </div>
+    </li>
+    <li>
+    {% if unreadmsgs > 0 %}
+      <a href="{% url 'view-messages' %}"
+        ><span class="new badge">{{unreadmsgs}}</span
+        ><i class="material-icons">message</i>Your Messages</a
+      >
+    {% else %}
+      <a href="{% url 'view-messages' %}"
+        ><i class="material-icons">message</i>Your Messages</a
+      >
+    {% endif %}
+    </li>
+    <li><a href="{% url 'profile-page' %}" class="waves-effect"><i class="material-icons">account_box</i>Your Profile</a></li>
+    <li><div class="divider"></div></li>
+    <li><a class="subheader">Other Pages</a></li>
+    <li><a class="waves-effect" href="/"><i class="material-icons">home</i>Dating Page</a></li>
+  </ul>
+  <div class="burger">
+    {% if unreadmsgs > 0 %}
+      <a href="#" data-target="slide-out" class="sidenav-trigger"
+        ><span class="new badge">{{unreadmsgs}}</span>
+        <i class="material-icons" style="color: black; margin: 20px;">menu</i>
+      </a>
+    {% else %}
+      <a href="#" data-target="slide-out" class="sidenav-trigger"
+        >
+        <i class="material-icons" style="color: black; margin: 20px;">menu</i>
+      </a>
+    {% endif %}
+  </div>
+</section>
+
+<section class="messages">
+{% for msg in msgs %}
+    <div class="message">
+        <div class="message__detail">
+            <img class="message__image" src='{{msg.author.profile.profile_image.url}}' />
+            <p class="message__authort">{{msg.author.profile.full_name}}</p>
+            <p class="message__date">{{msg.date_posted|date:"D/m/y - H:i"}}</p>
+        </div>
+        <div class="message__content">
+            <p class="message__msg">{{msg.content}}</p>
+        </div>
+        <form method="POST", action="{% url 'mark-read' msg.pk %}">
+            {% csrf_token %}
+            {% if unreadmsgs > 0 %}
+                <button class="mark-read" name="msg_id" value="{{msg.id}}"><i class="tiny material-icons">check_circle</i>Mark as Read</button>
+            {% else %}
+                <p class="read">Message Read</p>
+            {% endif %}
+        </form>
+    </div>
+
+{% endfor %}
+
+</section>
+
+{% include "footer.html" %}
+
+{% endblock content %}

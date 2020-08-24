@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+<!--  -->
+{% load crispy_forms_tags %}
+<!--  -->
+{% block head %}
+<link
+  rel="stylesheet"
+  href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+/>
+
+{% endblock head %}
+<!--  -->
+{% block content %}
+<div class="container-fluid">
+  <h1>Send them a Message below</h1>
+  <!--  -->
+  <div class="row">
+    <form class="col s12" action="" method="post">
+      {% csrf_token %}
+      <div>
+        <div class="input-field col s12">
+          {{form|crispy}}
+        </div>
+        <input
+          type="submit"
+          value="Send Message"
+          class="btn btn-success mb-5 ml-2"
+        />
+        <a href="{% url 'date-page' %}" class="btn btn-warning mb-5">Cancel</a>
+      </div>
+    </form>
+  </div>
+</div>
+
+{% endblock content %}

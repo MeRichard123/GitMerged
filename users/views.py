@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from .forms import UserRegisterForm, ProfileUpdateForm
 from django.contrib import messages
 from django.views.generic import UpdateView, CreateView
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.decorators import login_required
 from .models import *
 
 # Create your views here.
@@ -22,6 +22,7 @@ def register(req):
     return render(req, "users/register.html", {'form': Form})
 
 
+@login_required
 def profile(req):
     user = req.user
     profile = Profile.objects.get(user=user)

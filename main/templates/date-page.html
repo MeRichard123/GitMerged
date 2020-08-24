@@ -19,13 +19,13 @@
 {% block content %}
 <section class="date-page">
   <div class="navigation navigation--bg">
-    <a href="" class="logo">GitMerged</a>
+    <a href="" class="logo link">GitMerged</a>
     <div>
       {% if user.is_authenticated %}
-      <a href="{% url 'profile-page' %}" class="profile-link">Profile</a>
-      <a href="{% url 'logout' %}" class="login">Logout</a>
+      <a href="{% url 'profile-page' %}" class="profile-link link">Profile</a>
+      <a href="{% url 'logout' %}" class="login link">Logout</a>
       {% else %}
-      <a href="{% url 'login' %}" class="login">Log in</a>
+      <a href="{% url 'login' %}" class="login link">Log in</a>
       {% endif %}
     </div>
   </div>
@@ -38,16 +38,36 @@
       </div>
     </li>
     <li>
-      <a href="#!"><i class="material-icons">cloud</i>First Link With Icon</a>
+      {% if unreadmsgs > 0 %}
+      <a href="{% url 'view-messages' %}" class="waves-effect"
+        ><span class="new badge">{{unreadmsgs}}</span
+        ><i class="material-icons">message</i>Your Messages</a
+      >
+      {% else %}
+      <a href="{% url 'view-messages' %}" class="waves-effect"
+        ><i class="material-icons">message</i>Your Messages</a
+      >
+      {% endif %}
+      
     </li>
-    <li><a href="#!">Second Link</a></li>
+    <li><a href="{% url 'profile-page' %}" class="waves-effect"><i class="material-icons">account_box</i>Your Profile</a></li>
     <li><div class="divider"></div></li>
-    <li><a class="subheader">Subheader</a></li>
-    <li><a class="waves-effect" href="#!">Third Link With Waves</a></li>
+    <li><a class="subheader">Other Pages</a></li>
+    <li><a class="waves-effect" href="/"><i class="material-icons">home</i>Dating Page</a></li>
   </ul>
-  <a href="#" data-target="slide-out" class="sidenav-trigger"
-    ><i class="material-icons" style="color: black; margin: 20px;">menu</i></a
-  >
+  <div class="burger">
+    {% if unreadmsgs > 0 %}
+      <a href="#" data-target="slide-out" class="sidenav-trigger"
+        ><span class="new badge">{{unreadmsgs}}</span>
+        <i class="material-icons" style="color: black; margin: 20px;">menu</i>
+      </a>
+    {% else %}
+      <a href="#" data-target="slide-out" class="sidenav-trigger"
+        >
+        <i class="material-icons" style="color: black; margin: 20px;">menu</i>
+      </a>
+    {% endif %}
+  </div>
   <ul class="collapsible" id="filter">
     <li>
       <div class="collapsible-header">
@@ -77,62 +97,70 @@
   <div class="users-container">
     {% for user in users %}
     <!--  -->
-    {% if user.user != userIn %} {% if userIn not in user.blocked_by.all %}
-    <div class="user-card">
-      <a href="{% url 'user-detail' user.pk %}">
-        <img src="{{user.profile_image.url}}" class="image-home" alt="" />
-      </a>
-      <div class="info-container">
-        <p>{{user.full_name}}, {{user.age}}</p>
-        <p>{{user.tech_stack}}</p>
-        <div style="display: flex; justify-content: space-between;">
-          <form action="{% url 'like' user.pk %}" method="POST">
-            {% csrf_token %}
-            <!--  -->
-            {% if userIn not in user.likeability.all %}
-            <button
-              class="like-btn"
-              type="submit"
-              ,
-              name="user_id"
-              ,
-              value="{{user.id}}"
-            >
-              <i class="far fa-heart"></i>
-            </button>
-            {% else %}
-            <button
-              class="like-btn"
-              type="submit"
-              ,
-              name="user_id"
-              ,
-              value="{{user.id}}"
-            >
-              <i class="fas fa-heart"></i>
-            </button>
-            {% endif %}
-          </form>
-          <form action="{% url 'block' user.pk %}" method="POST">
-            {% csrf_token %}
-            <button
-              class="block-btn"
-              type="submit"
-              ,
-              name="user_id"
-              ,
-              value="{{user.id}}"
-            >
-              <i class="far fa-times-circle"></i>
-            </button>
-          </form>
+      {% if user.user != userIn %}
+      
+        {% if userIn not in user.blocked_by.all %}
+        <div class="user-card">
+          <a href="{% url 'user-detail' user.pk %}">
+            <img src="{{user.profile_image.url}}" class="image-home" alt="" />
+          </a>
+          <div class="info-container">
+            <p>{{user.full_name}}, {{user.age}}</p>
+            <p>{{user.tech_stack}}</p>
+            <div style="display: flex; justify-content: space-between;">
+              <form action="{% url 'like' user.pk %}" method="POST">
+                {% csrf_token %}
+                <!--  -->
+                {% if userIn not in user.likeability.all %}
+                <button
+                  class="like-btn"
+                  type="submit"
+                  ,
+                  name="user_id"
+                  ,
+                  value="{{user.id}}"
+                >
+                  <i class="far fa-heart"></i>
+                </button>
+                {% else %}
+                <button
+                  class="like-btn"
+                  type="submit"
+                  ,
+                  name="user_id"
+                  ,
+                  value="{{user.id}}"
+                >
+                  <i class="fas fa-heart"></i>
+                </button>
+                {% endif %}
+              </form>
+              <form action="{% url 'block' user.pk %}" method="POST">
+                {% csrf_token %}
+                <button
+                  class="block-btn"
+                  type="submit"
+                  ,
+                  name="user_id"
+                  ,
+                  value="{{user.id}}"
+                >
+                  <i class="far fa-times-circle"></i>
+                </button>
+              </form>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
-    {% endif %} {% endif %} {% endfor %}
+        {% endif %}
+      
+      {% endif %}
+    
+    {% endfor %}
   </div>
 </section>
-{% include "footer.html" %} {% endblock content %}
+{% include "footer.html" %}
+
+{% endblock content %}
 
 <!--  -->
 {% comment %} https://diverseui.com/ {% endcomment %}

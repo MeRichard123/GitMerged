@@ -5,13 +5,13 @@
 {% block content %}
 <section>
   <div class="navigation navigation--bg">
-    <a href="/" class="logo">GitMerged</a>
+    <a href="/" class="logo link">GitMerged</a>
     <div>
       {% if user.is_authenticated %}
-      <a href="{% url 'profile-page' %}" class="profile-link">Profile</a>
-      <a href="{% url 'logout' %}" class="login">Logout</a>
+      <a href="{% url 'profile-page' %}" class="profile-link link">Profile</a>
+      <a href="{% url 'logout' %}" class="login link">Logout</a>
       {% else %}
-      <a href="{% url 'login' %}" class="login">Log in</a>
+      <a href="{% url 'login' %}" class="login link">Log in</a>
       {% endif %}
     </div>
   </div>
