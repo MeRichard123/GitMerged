@@ -1,0 +1,12 @@
+asgiref==3.2.10
+autopep8==1.5.4
+Django==3.1
+django-crispy-forms==1.9.2
+django-filter==2.3.0
+django-multiselectfield==0.1.12
+Pillow==7.2.0
+pycodestyle==2.6.0
+python-decouple==3.3
+pytz==2020.1
+sqlparse==0.3.1
+toml==0.10.1
