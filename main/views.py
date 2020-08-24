@@ -76,6 +76,11 @@ class WriteMessage(LoginRequiredMixin, CreateView):
         return super().form_valid(form)
 
 
+class DeleteMessage(LoginRequiredMixin, DeleteView):
+    model = Message
+    success_url = "/"
+
+
 @login_required
 def ViewMessages(req):
     messages = Message.objects.filter(receiver=req.user)

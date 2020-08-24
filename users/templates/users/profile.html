@@ -42,12 +42,19 @@
         <h4>{{likes}}</h4>
       </div>
     </div>
-    <a
-      href="{% url 'date-page' %}"
-      style="margin: 20px; background: coral;"
-      class="btn"
-      >Find your match</a
-    >
+    <div id="match-btn">
+      {% if unreadmsgs > 0 %}
+      <span class="new badge" id="msg-badge">
+        {{unreadmsgs}}
+      </span>
+      {% endif %}
+      <a
+        href="{% url 'date-page' %}"
+        style="margin: 20px; background: coral;"
+        class="btn"
+        >Find your match</a
+      >
+    </div>
   </section>
   <div style="margin: 50px auto; max-width: 80%;">
     <ul class="collapsible">

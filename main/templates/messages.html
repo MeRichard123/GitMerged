@@ -73,6 +73,7 @@
                 <p class="read">Message Read</p>
             {% endif %}
         </form>
+        <a href="{% url 'delete-message' msg.pk %}" class="remove-btn"><i class="material-icons">delete_forever</i></a>
     </div>
 
 {% endfor %}

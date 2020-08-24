@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+<!--  -->
+{% load crispy_forms_tags %}
+<!--  -->
+{% block head %}
+<link
+  rel="stylesheet"
+  href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+/>
+
+{% endblock head %}
+<!--  -->
+{% block content %}
+<div class="container-delete">
+  <h1>Are you sure you want to Delete this message?</h1>
+  <!--  -->
+  <div class="row">
+    <form class="col s12" action="" method="post">
+      {% csrf_token %}
+        <input
+          type="submit"
+          value="Delete Message"
+          class="btn btn-danger mb-5 ml-2"
+        />
+        <a class="btn btn-warning" href="{% url 'view-messages' %}">Cancel</a>
+    </form>
+  </div>
+</div>
+
+{% endblock content %}

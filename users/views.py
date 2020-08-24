@@ -5,6 +5,7 @@ from django.contrib import messages
 from django.views.generic import UpdateView, CreateView
 from django.contrib.auth.decorators import login_required
 from .models import *
+from main.models import Message
 
 # Create your views here.
 
@@ -27,6 +28,8 @@ def profile(req):
     user = req.user
     profile = Profile.objects.get(user=user)
     likes = profile.num_likes
+    unreadMessages = Message.objects.filter(
+        receiver=req.user).filter(status=False).count()
     if req.method == "POST":
         form = ProfileUpdateForm(
             req.POST, req.FILES, instance=req.user.profile)
@@ -40,8 +43,8 @@ def profile(req):
 
     context = {
         'form': form,
-        'likes': likes
-
+        'likes': likes,
+        'unreadmsgs': unreadMessages
     }
 
     return render(req, "users/profile.html", context)

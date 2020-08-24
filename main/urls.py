@@ -13,5 +13,6 @@ urlpatterns = [
     path("new-message/<str:username>",
          views.WriteMessage.as_view(), name="write-message"),
     path("view-messages/", views.ViewMessages, name="view-messages"),
-    path("mark-read/<int:pk>", views.MarkAsRead, name="mark-read")
+    path("mark-read/<int:pk>", views.MarkAsRead, name="mark-read"),
+    path("delete/<int:pk>", views.DeleteMessage.as_view(), name="delete-message")
 ]
