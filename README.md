@@ -1,6 +1,6 @@
 # GitMerged
 
-This is a tinder App for Developers build for Django.
+This is a tinder App for Developers build with Django.
 
 This Idea came from the [RTC Project Ideas Repo](https://github.com/RealToughCandy/project-ideas-for-web-developers)
 
