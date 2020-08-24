@@ -25,7 +25,7 @@ pip install virtual
 vritualenv env
 env\Scripts\activate.bat
 ```
-Mac is similar the only differenct is the activate. 
+Mac is similar the only difference is the activate command. `bin\activate`
 
 Now you can install requirements: `pip install -r requirements.txt`
 
@@ -50,4 +50,5 @@ python manage.py makemigrations
 python manage.py migrate
 python manage.py runserver
 ```
+And now you're live on localhost:8000
 
