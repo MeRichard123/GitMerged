@@ -55,28 +55,31 @@
 </section>
 
 <section class="messages">
-{% for msg in msgs %}
-    <div class="message">
-        <div class="message__detail">
-            <img class="message__image" src='{{msg.author.profile.profile_image.url}}' />
-            <p class="message__authort">{{msg.author.profile.full_name}}</p>
-            <p class="message__date">{{msg.date_posted|date:"D/m/y - H:i"}}</p>
-        </div>
-        <div class="message__content">
-            <p class="message__msg">{{msg.content}}</p>
-        </div>
-        <form method="POST", action="{% url 'mark-read' msg.pk %}">
-            {% csrf_token %}
-            {% if unreadmsgs > 0 %}
-                <button class="mark-read" name="msg_id" value="{{msg.id}}"><i class="tiny material-icons">check_circle</i>Mark as Read</button>
-            {% else %}
-                <p class="read">Message Read</p>
-            {% endif %}
-        </form>
-        <a href="{% url 'delete-message' msg.pk %}" class="remove-btn"><i class="material-icons">delete_forever</i></a>
-    </div>
-
-{% endfor %}
+{% if msgs %}
+  {% for msg in msgs %}
+      <div class="message">
+          <div class="message__detail">
+              <img class="message__image" src='{{msg.author.profile.profile_image.url}}' />
+              <p class="message__authort">{{msg.author.profile.full_name}}</p>
+              <p class="message__date">{{msg.date_posted|date:"D/m/y - H:i"}}</p>
+          </div>
+          <div class="message__content">
+              <p class="message__msg">{{msg.content}}</p>
+          </div>
+          <form method="POST", action="{% url 'mark-read' msg.pk %}">
+              {% csrf_token %}
+              {% if not msg.status %}
+                  <button class="mark-read" name="msg_id" value="{{msg.id}}"><i class="tiny material-icons">check_circle</i>Mark as Read</button>
+              {% else %}
+                  <p class="read">Message Read</p>
+              {% endif %}
+          </form>
+          <a href="{% url 'delete-message' msg.pk %}" class="remove-btn"><i class="material-icons">delete_forever</i></a>
+      </div>
+  {% endfor %}
+{% else %}
+  <h4 style="text-align:center">You have no Messages :(</h4>
+{% endif %}
 
 </section>
 
