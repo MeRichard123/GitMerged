@@ -90,6 +90,7 @@ a {
 }
 a.login:hover {
   background: #fd267d;
+  color: white;
 }
 
 .profile-link {
