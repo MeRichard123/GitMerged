@@ -6,8 +6,8 @@ This is a tinder App for Developers build with Django.
 - Users can make an account and login 
 - Then you fill out their profile details -> tech stack etc.. 
 - Users can browse and filter other users
-- They can also express intrest towards other users with a heart
-- If both users express intrest it's match
+- They can also express interest towards other users with a heart
+- If both users express interest it's match
 - Users can send each other messages and view eachothers profiles 
 - Users can block each other
 
