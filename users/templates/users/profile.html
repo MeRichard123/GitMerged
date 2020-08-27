@@ -25,6 +25,7 @@
     </div>
     <div class="profile-about">
       <h2>{{ user.profile.full_name }}</h2>
+      <h6>{{user.profile.os}} | {{user.profile.editor}}</h6>
       <p class="bio">{{ user.profile.bio }}</p>
       <p class="username">{{ user.username }}</p>
     </div>
@@ -42,21 +43,20 @@
         <h4>{{likes}}</h4>
       </div>
     </div>
+
     <div id="match-btn">
       {% if unreadmsgs > 0 %}
-      <span class="new badge" id="msg-badge">
-        {{unreadmsgs}}
-      </span>
+      <span class="new badge" id="msg-badge"> {{unreadmsgs}} </span>
       {% endif %}
       <a
         href="{% url 'date-page' %}"
-        style="margin: 20px; background: coral;"
+        style="margin: 20px; background: coral"
         class="btn"
         >Find your match</a
       >
     </div>
   </section>
-  <div style="margin: 50px auto; max-width: 80%;">
+  <div style="margin: 50px auto; max-width: 80%">
     <ul class="collapsible">
       <li>
         <div class="collapsible-header">
@@ -67,11 +67,10 @@
           <form action="" method="POST" enctype="multipart/form-data">
             <!-- Cross site request token added security -->
             {% csrf_token %}
-            <fieldset>
-              {{ form|crispy }}
-            </fieldset>
+            <!-- -->
+            {{ form }}
             <div>
-              <button class="btn" type="submit" style="margin: 20px 0;">
+              <button class="btn" type="submit" style="margin: 20px 0">
                 Update
               </button>
             </div>
@@ -114,9 +113,7 @@
     </div>
   </div>
   <div class="footer-copyright">
-    <div class="container">
-      GitMerged © 2020
-    </div>
+    <div class="container">GitMerged © 2020</div>
   </div>
 </footer>
 

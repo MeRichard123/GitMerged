@@ -14,4 +14,4 @@ class UserFilter(django_filters.FilterSet):
         model = Profile
         fields = "__all__"
         exclude = ["user", 'profile_image', 'bio', 'tech_stack',
-                   'full_name', 'age', 'gender', 'likeability', 'blocked_by']
+                   'full_name', 'age', 'gender', 'likeability', 'blocked_by', 'editor', 'os', 'spacing']

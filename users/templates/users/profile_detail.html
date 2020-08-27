@@ -21,6 +21,8 @@
     </div>
     <div class="profile-about">
       <h2>{{ object.full_name }}</h2>
+      <h6>{{object.os}} | {{object.editor}}</h6>
+      <h6>This user prefers to use {{object.spacing}}</h6>
       <p class="bio">{{ object.bio }}</p>
       <p class="username">{{ object.user.username }}</p>
     </div>
@@ -41,7 +43,7 @@
     <a
       href="{% url 'write-message' object.user.username %}"
       class="btn"
-      style="margin: 20px; background: coral;"
+      style="margin: 20px; background: coral"
       >Send a Message</a
     >
   </section>
@@ -79,9 +81,7 @@
     </div>
   </div>
   <div class="footer-copyright">
-    <div class="container">
-      GitMerged © 2020
-    </div>
+    <div class="container">GitMerged © 2020</div>
   </div>
 </footer>
 
