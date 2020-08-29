@@ -27,7 +27,7 @@ pip install virtual
 vritualenv env
 env\Scripts\activate.bat
 ```
-Mac is similar the only difference is the activate command. `bin\activate`
+Mac is similar the only difference is the activate command -> `source bin\activate`
 
 Now you can install requirements: `pip install -r requirements.txt`
 
